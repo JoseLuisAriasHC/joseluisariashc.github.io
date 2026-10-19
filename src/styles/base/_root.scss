@@ -1,11 +1,59 @@
-// Paleta tomada del banner de LinkedIn
+@use '../abstracts' as *;
+
 :root {
   color-scheme: dark;
 
-  --color-bg: #0d1925;
-  --color-bg-deep: #17382f;
-  --color-line: #2e4e4b;
-  --color-accent: #7ba18a;
-  --color-text: #f6f5f2;
-  --color-text-soft: #c9dfd5;
+  // Color, tomado del banner de LinkedIn
+  --color-bg: #0d1925; // Noche
+  --color-bg-deep: #17382f; // Pino
+  --color-line: #2e4e4b; // Musgo
+  --color-signal: #7ba18a; // Salvia: nodos, estado activo, subrayados y foco. Nunca texto.
+  --color-text: #f6f5f2; // Papel
+  --color-text-soft: #c9dfd5; // Niebla
+
+  // Tipografía: Instrument Sans variable (ancho 75–100 %, peso 400–700)
+  --font-sans: 'Instrument Sans Variable', system-ui, sans-serif;
+  --font-stretch-display: 82%;
+  --leading-tight: 1.1;
+  --leading-body: 1.6;
+  --measure: 65ch;
+
+  // Escala tipográfica clásica, nombrada por su tamaño en px
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-21: 1.3125rem;
+  --text-24: 1.5rem;
+  --text-36: 2.25rem;
+  --text-48: 3rem;
+  --text-60: 3.75rem;
+
+  // Espaciado en pasos de 4 px
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  // Maquetación: el margen lateral deja sitio al marco fijo en escritorio
+  --content-max: 68rem;
+  --frame-gutter: var(--space-6);
+
+  // La línea y sus nodos
+  --line-width: 1px;
+  --node-size: 0.625rem;
+
+  // Movimiento
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-quick: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 900ms;
+
+  @include snap-layout {
+    --frame-gutter: clamp(7rem, 12vw, 11rem);
+  }
 }

@@ -1,3 +1,4 @@
+import '@fontsource-variable/instrument-sans/wdth.css'
 import './styles/main.scss'
 
 import { createApp } from 'vue'

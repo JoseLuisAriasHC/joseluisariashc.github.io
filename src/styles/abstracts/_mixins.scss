@@ -11,3 +11,10 @@
     @content;
   }
 }
+
+// Escritorio con altura suficiente: marco fijo a los lados y scroll por secciones
+@mixin snap-layout {
+  @media (min-width: map.get($breakpoints, lg)) and (min-height: $snap-min-height) {
+    @content;
+  }
+}

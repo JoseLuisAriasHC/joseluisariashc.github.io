@@ -1,3 +1,6 @@
-// Estilos globales. Los de cada componente van en su <style scoped lang="scss">.
+// Estilos globales: tokens, reset, tipografía y página.
+// Los de cada componente van en su <style scoped lang="scss">.
 @use 'base/root';
 @use 'base/reset';
+@use 'base/typography';
+@use 'base/page';

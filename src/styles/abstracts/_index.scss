@@ -1,0 +1,4 @@
+// Solo variables, funciones y mixins: este módulo se inyecta en cada <style lang="scss">
+// (additionalData en vite.config.ts), así que nunca debe generar CSS.
+@forward 'breakpoints';
+@forward 'mixins';

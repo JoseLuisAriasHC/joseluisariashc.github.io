@@ -27,6 +27,9 @@ export const es: SiteContent = {
     closeMenu: 'Cerrar menú',
     seeWork: 'Ver trabajos destacados',
     downloadCv: 'Descargar CV',
+    writeEmail: 'Escribir un correo',
+    viewLinkedin: 'Ver perfil de LinkedIn',
+    mainStack: 'Tecnologías principales',
     present: 'actualidad',
     featuredWork: 'Trabajos destacados',
     stack: 'Tecnologías',
@@ -54,6 +57,7 @@ export const es: SiteContent = {
     id: 'trayectoria',
     navLabel: 'Trayectoria',
     title: 'Trayectoria y formación',
+    experienceTitle: 'Experiencia',
     jobs: [
       {
         key: 'dreams-junior',

@@ -63,6 +63,7 @@ export interface Education {
 
 export interface CareerContent extends SectionMeta {
   title: string
+  experienceTitle: string
   jobs: Job[]
   educationTitle: string
   education: Education[]
@@ -103,6 +104,9 @@ export interface UiLabels {
   closeMenu: string
   seeWork: string
   downloadCv: string
+  writeEmail: string
+  viewLinkedin: string
+  mainStack: string
   present: string
   featuredWork: string
   stack: string

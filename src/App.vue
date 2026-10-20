@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import BaseSection from '@/components/base/BaseSection.vue'
 import SiteFrame from '@/components/frame/SiteFrame.vue'
+import SectionCareer from '@/components/sections/SectionCareer.vue'
+import SectionCase from '@/components/sections/SectionCase.vue'
+import SectionContact from '@/components/sections/SectionContact.vue'
+import SectionHero from '@/components/sections/SectionHero.vue'
 import { useActiveSection } from '@/composables/useActiveSection'
 import { sectionLinks } from '@/content/navigation'
 import type { SiteContent } from '@/content/types'
@@ -9,14 +12,13 @@ import type { SiteContent } from '@/content/types'
 const { content } = defineProps<{ content: SiteContent }>()
 
 const sections = computed(() => sectionLinks(content))
+const caseLinks = computed(() => content.cases.map(({ key, id, title }) => ({ key, id, title })))
+const workHref = computed(() => `#${content.cases[0]?.id ?? ''}`)
+
 const { activeIndex } = useActiveSection(
   sections.value.map((section) => section.id),
   { syncHash: true },
 )
-
-// Vista previa hasta la fase 5: la portada con su texto y el resto de secciones solo con su nombre
-const stackLine = computed(() => content.hero.stack.join(' · '))
-const pendingSections = computed(() => sections.value.slice(1))
 </script>
 
 <template>
@@ -32,23 +34,29 @@ const pendingSections = computed(() => sections.value.slice(1))
     class="app-main"
     tabindex="-1"
   >
-    <BaseSection
-      :id="content.hero.id"
-      class="preview"
-    >
-      <h1 class="preview__title">{{ content.hero.headline }}</h1>
-      <p class="preview__stack">{{ stackLine }}</p>
-      <p class="preview__text">{{ content.hero.intro }}</p>
-    </BaseSection>
-
-    <BaseSection
-      v-for="section in pendingSections"
-      :id="section.id"
-      :key="section.id"
-      class="preview"
-    >
-      <h2 class="preview__heading">{{ section.label }}</h2>
-    </BaseSection>
+    <SectionHero
+      :hero="content.hero"
+      :person="content.person"
+      :ui="content.ui"
+      :work-href="workHref"
+    />
+    <SectionCareer
+      :career="content.career"
+      :case-links="caseLinks"
+      :ui="content.ui"
+      :locale="content.locale"
+    />
+    <SectionCase
+      v-for="study in content.cases"
+      :key="study.key"
+      :study="study"
+      :ui="content.ui"
+    />
+    <SectionContact
+      :contact="content.contact"
+      :person="content.person"
+      :ui="content.ui"
+    />
   </main>
 </template>
 
@@ -56,27 +64,5 @@ const pendingSections = computed(() => sections.value.slice(1))
 // El salto «Saltar al contenido» enfoca <main>; no necesita contorno
 .app-main:focus {
   outline: none;
-}
-
-.preview {
-  &__title {
-    max-width: 14ch;
-    margin-block-end: var(--space-6);
-    font-size: clamp(var(--text-36), 6vw, var(--text-60));
-  }
-
-  &__heading {
-    font-size: clamp(var(--text-24), 4vw, var(--text-48));
-  }
-
-  &__stack {
-    color: var(--color-text-soft);
-    font-size: var(--text-21);
-  }
-
-  &__text {
-    max-width: var(--measure);
-    margin-block-start: var(--space-6);
-  }
 }
 </style>

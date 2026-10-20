@@ -10,12 +10,28 @@ body {
 // Titulares: misma familia, más estrecha y con interlineado ajustado
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-weight: 600;
   font-stretch: var(--font-stretch-display);
   line-height: var(--leading-tight);
   letter-spacing: -0.01em;
   text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(var(--text-36), 6vw, var(--text-60));
+}
+
+h2 {
+  font-size: clamp(var(--text-24), 2.5vw + 0.75rem, var(--text-36));
+}
+
+// El ancho estrecho es para titulares grandes; a 18 px se aprieta, así que h3 y h4 van a ancho normal
+h3,
+h4 {
+  font-size: var(--text-18);
+  font-stretch: 100%;
 }
 
 p {

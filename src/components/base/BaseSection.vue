@@ -3,8 +3,8 @@
   id, class y aria-* llegan a <section> por fallthrough: <BaseSection id="inicio" class="hero">
 -->
 <template>
-  <section class="section">
-    <div class="section__inner">
+  <section class="base-section">
+    <div class="base-section__inner">
       <slot />
     </div>
   </section>
@@ -12,7 +12,7 @@
 
 <style scoped lang="scss">
 // :where() deja la especificidad a cero para que el bloque de cada sección pueda ajustarlo
-:where(.section) {
+:where(.base-section) {
   display: grid;
   align-items: center;
   padding-block: var(--space-24) var(--space-16);
@@ -24,7 +24,7 @@
   }
 }
 
-:where(.section__inner) {
+:where(.base-section__inner) {
   width: min(100% - 2 * var(--frame-gutter), var(--content-max));
   margin-inline: auto;
 }

@@ -1,47 +1,42 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import BaseSection from '@/components/base/BaseSection.vue'
-import type { Locale } from '@/content/locale'
+import type { SiteContent } from '@/content/types'
 
-const { locale } = defineProps<{ locale: Locale }>()
+const { content } = defineProps<{ content: SiteContent }>()
 
-// Vista previa de la fase 2 (tipografía, fondo y scroll); se sustituye por las secciones reales
-const alternate = computed(() =>
-  locale === 'es'
-    ? { href: '/en/', lang: 'en', label: 'English' }
-    : { href: '/', lang: 'es', label: 'Español' },
-)
+// Vista previa de las fases 2 y 3; se sustituye por las secciones reales en la fase 5
+const stackLine = computed(() => content.hero.stack.join(' · '))
+const currentJob = computed(() => content.career.jobs[0])
 </script>
 
 <template>
   <BaseSection
-    id="inicio"
+    :id="content.hero.id"
     class="preview"
   >
-    <p class="preview__name">Jose Luis Arias</p>
-    <h1 class="preview__title">Desarrollo backend y automatización</h1>
-    <p class="preview__stack">C# · .NET · SQL Server · n8n</p>
-    <p class="preview__text">
-      Me gusta entender cómo funciona un proceso, detectar dónde se complica y convertirlo en una
-      solución que resulte más sencilla de utilizar y mantener.
-    </p>
+    <p class="preview__name">{{ content.person.name }}</p>
+    <h1 class="preview__title">{{ content.hero.headline }}</h1>
+    <p class="preview__stack">{{ stackLine }}</p>
+    <p class="preview__text">{{ content.hero.intro }}</p>
     <a
-      class="preview__link"
-      :href="alternate.href"
-      :hreflang="alternate.lang"
+      :href="content.ui.alternateLanguage.href"
+      :hreflang="content.ui.alternateLanguage.lang"
     >
-      {{ alternate.label }}
+      {{ content.ui.alternateLanguage.label }}
     </a>
   </BaseSection>
 
   <BaseSection
-    id="trayectoria"
+    :id="content.career.id"
     class="preview"
   >
-    <h2 class="preview__heading">Trayectoria y formación</h2>
-    <p class="preview__text">
-      Desarrollo aplicaciones web con C#, .NET y SQL Server, modernizo sistemas existentes y
-      automatizo procesos empresariales con n8n.
+    <h2 class="preview__heading">{{ content.career.title }}</h2>
+    <p
+      v-if="currentJob"
+      class="preview__text"
+    >
+      {{ currentJob.summary }}
     </p>
   </BaseSection>
 </template>

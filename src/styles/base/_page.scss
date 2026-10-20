@@ -23,9 +23,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-image:
-    url($grain),
-    linear-gradient(100deg, var(--color-bg) 35%, var(--color-bg-deep));
+  background-image: url($grain), linear-gradient(100deg, var(--color-bg) 35%, var(--color-bg-deep));
   background-size:
     200px 200px,
     100% 100%;

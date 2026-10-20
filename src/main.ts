@@ -3,8 +3,9 @@ import './styles/main.scss'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import { contentByLocale } from './content'
 import { resolveLocale } from './content/locale'
 
-const locale = resolveLocale(document.documentElement.lang)
+const content = contentByLocale[resolveLocale(document.documentElement.lang)]
 
-createApp(App, { locale }).mount('#app')
+createApp(App, { content }).mount('#app')

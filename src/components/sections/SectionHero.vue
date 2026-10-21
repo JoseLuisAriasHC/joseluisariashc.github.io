@@ -24,7 +24,10 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
     class="section-hero"
     :aria-labelledby="headingId"
   >
-    <div class="section-hero__layout">
+    <div
+      class="section-hero__layout"
+      :style="{ '--tech-count': hero.stack.length }"
+    >
       <div class="section-hero__photo">
         <div class="section-hero__frame">
           <img
@@ -53,9 +56,10 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
         :aria-label="ui.mainStack"
       >
         <li
-          v-for="tech in hero.stack"
+          v-for="(tech, index) in hero.stack"
           :key="tech"
           class="section-hero__tech"
+          :style="{ '--i': index }"
         >
           {{ tech }}
         </li>
@@ -171,13 +175,16 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
       grid-row: 2;
       flex-wrap: nowrap;
 
-      // Tramo que entra desde el borde izquierdo de la ventana
+      // Tramo que entra desde el borde izquierdo de la ventana: mide lo que separa el contenido
+      // centrado del borde (más un margen por la barra de scroll), para que se dibuje entero a la vista
       &::before {
         content: '';
         position: absolute;
         inset-block-start: 50%;
         inset-inline-end: 100%;
-        width: 100vw;
+        width: calc(
+          (100vw - min(100vw - 2 * var(--frame-gutter), var(--content-max))) / 2 + var(--space-4)
+        );
         height: var(--line-width);
         background-color: var(--color-line);
       }
@@ -230,6 +237,81 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-block-start: var(--space-8);
+  }
+}
+
+// El único momento de movimiento de la página, una vez al cargar: el titular aparece, la línea
+// entra por la izquierda, recorre las tecnologías y, al llegar a la foto, enciende su anillo.
+// La foto se ve desde el principio (no retrasa la carga); solo cambia el color del anillo.
+// Con «reducir movimiento» activado no se anima nada y se ve directamente el estado final.
+@media (prefers-reduced-motion: no-preference) {
+  .section-hero {
+    &__layout {
+      --t-entry: 150ms;
+      --t-entry-length: 500ms;
+      --t-step: 220ms;
+      --t-arrival: calc(var(--t-entry) + var(--t-entry-length) + var(--tech-count) * var(--t-step));
+    }
+
+    &__headline {
+      animation: hero-appear 400ms var(--ease-out) both;
+    }
+
+    &__stack::before {
+      transform-origin: left center;
+      animation: hero-draw var(--t-entry-length) var(--ease-out) var(--t-entry) both;
+    }
+
+    &__tech {
+      --t-tech: calc(var(--t-entry) + var(--t-entry-length) + var(--i) * var(--t-step));
+
+      animation: hero-appear 200ms var(--ease-out) var(--t-tech) both;
+
+      &::before {
+        animation: hero-pop 200ms var(--ease-out) var(--t-tech) both;
+      }
+
+      &::after {
+        transform-origin: left center;
+        animation: hero-draw calc(var(--t-step) - 40ms) linear calc(var(--t-tech) + 40ms) both;
+      }
+    }
+
+    // En móvil la foto va encima del titular y la línea no llega a ella
+    @include mq(md) {
+      &__photo::before {
+        transform-origin: left center;
+        animation: hero-draw 180ms linear var(--t-arrival) both;
+      }
+
+      &__frame {
+        animation: hero-light 500ms var(--ease-out) calc(var(--t-arrival) + 180ms) both;
+      }
+    }
+  }
+}
+
+@keyframes hero-appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes hero-pop {
+  from {
+    transform: scale(0);
+  }
+}
+
+@keyframes hero-light {
+  from {
+    border-color: var(--color-line);
   }
 }
 </style>

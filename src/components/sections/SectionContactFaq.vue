@@ -29,11 +29,25 @@ defineProps<{
     font-size: var(--text-16);
   }
 
+  // La respuesta se despliega al abrirla; donde no hay soporte, simplemente aparece
   &__item {
+    interpolate-size: allow-keywords;
     border-block-start: var(--line-width) solid var(--color-line);
 
     &:last-child {
       border-block-end: var(--line-width) solid var(--color-line);
+    }
+
+    &::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size var(--duration-base) var(--ease-out),
+        content-visibility var(--duration-base) allow-discrete;
+    }
+
+    &[open]::details-content {
+      block-size: auto;
     }
   }
 

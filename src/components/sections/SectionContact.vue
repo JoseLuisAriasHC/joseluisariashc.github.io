@@ -38,6 +38,7 @@ const headingId = useId()
             rel="noopener noreferrer"
           >
             {{ ui.viewLinkedin }}
+            <span class="visually-hidden">({{ ui.opensInNewTab }})</span>
           </BaseButton>
         </div>
         <p class="section-contact__email">{{ person.links.email }}</p>

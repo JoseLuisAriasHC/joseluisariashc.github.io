@@ -100,8 +100,10 @@ export interface UiLabels {
   email: string
   nextSection: string
   backToTop: string
-  openMenu: string
+  menu: string
   closeMenu: string
+  /** Aviso solo para lectores de pantalla en los enlaces que abren otra pestaña */
+  opensInNewTab: string
   seeWork: string
   downloadCv: string
   writeEmail: string

@@ -10,6 +10,11 @@ html {
   @media (prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
   }
+
+  // Con el menú móvil abierto, la página de detrás no se desplaza
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
 
 // Grano fino como el del banner: ruido gris en mosaico que disimula las bandas del degradado.

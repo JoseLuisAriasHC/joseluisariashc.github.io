@@ -5,6 +5,7 @@ import SocialLinks from '@/components/common/SocialLinks.vue'
 import type { SectionLink } from '@/content/navigation'
 import type { Person, UiLabels } from '@/content/types'
 import SiteFrameLogo from './SiteFrameLogo.vue'
+import SiteFrameMenu from './SiteFrameMenu.vue'
 import SiteFrameNav from './SiteFrameNav.vue'
 import SiteFrameScrollCue from './SiteFrameScrollCue.vue'
 
@@ -56,6 +57,7 @@ const scrollCue = computed(() => {
         class="site-frame__social"
         :links="person.links"
         :email-label="ui.email"
+        :new-tab-label="ui.opensInNewTab"
       />
     </header>
 
@@ -85,6 +87,13 @@ const scrollCue = computed(() => {
       <SiteFrameScrollCue
         class="site-frame__scroll-cue"
         v-bind="scrollCue"
+      />
+      <SiteFrameMenu
+        class="site-frame__menu"
+        :person="person"
+        :ui="ui"
+        :sections="sections"
+        :active-index="activeIndex"
       />
     </div>
   </div>
@@ -158,7 +167,6 @@ const scrollCue = computed(() => {
   }
 
   &__actions {
-    display: flex;
     align-items: center;
     gap: var(--space-6);
   }
@@ -174,7 +182,9 @@ const scrollCue = computed(() => {
     }
   }
 
-  // La navegación lateral y el pie de enlaces solo existen en escritorio; en móvil llegará un menú (fase 7)
+  // En escritorio, idioma, contacto, nodos y enlaces van a los lados.
+  // En móvil todo eso vive dentro del menú, y la barra solo muestra el nombre y «Menú»
+  &__actions,
   &__social,
   &__nav,
   &__scroll-cue {
@@ -182,6 +192,12 @@ const scrollCue = computed(() => {
 
     @include snap-layout {
       display: flex;
+    }
+  }
+
+  &__menu {
+    @include snap-layout {
+      display: none;
     }
   }
 

@@ -5,6 +5,8 @@ import type { PersonLinks } from '@/content/types'
 const { links, emailLabel } = defineProps<{
   links: PersonLinks
   emailLabel: string
+  /** Aviso para lectores de pantalla en LinkedIn y GitHub, que se abren en otra pestaña */
+  newTabLabel: string
 }>()
 
 const items = computed(() => [
@@ -30,23 +32,30 @@ const items = computed(() => [
         :rel="item.external ? 'noopener noreferrer' : undefined"
       >
         {{ item.label }}
+        <span
+          v-if="item.external"
+          class="visually-hidden"
+        >
+          ({{ newTabLabel }})
+        </span>
       </a>
     </li>
   </ul>
 </template>
 
 <style scoped lang="scss">
+// El tamaño va en el bloque para que quien lo use pueda cambiarlo con su propia clase
 :where(.social-links) {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-4);
   padding: 0;
+  font-size: var(--text-14);
   list-style: none;
 }
 
 .social-links__link {
   color: var(--color-text-soft);
-  font-size: var(--text-14);
   text-decoration-line: none;
 
   &:hover {

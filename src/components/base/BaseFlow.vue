@@ -3,10 +3,12 @@
   --flow-gap separa los elementos y --node-offset alinea el nodo con la primera línea del contenido.
 -->
 <script setup lang="ts" generic="T">
-const { ordered = false } = defineProps<{
+const { ordered = false, activeIndex = -1 } = defineProps<{
   items: T[]
   itemKey: (item: T) => string
   ordered?: boolean
+  /** Rellena el nodo de este elemento (el menú móvil marca la sección actual) */
+  activeIndex?: number
 }>()
 
 defineSlots<{
@@ -26,7 +28,7 @@ defineSlots<{
       class="base-flow__item"
     >
       <span
-        class="base-flow__node"
+        :class="['base-flow__node', { 'base-flow__node--active': index === activeIndex }]"
         aria-hidden="true"
       />
       <div class="base-flow__content">
@@ -75,6 +77,10 @@ defineSlots<{
     margin-block-start: var(--node-offset);
     border: var(--line-width) solid var(--color-signal);
     border-radius: 50%;
+
+    &--active {
+      background-color: var(--color-signal);
+    }
   }
 }
 </style>

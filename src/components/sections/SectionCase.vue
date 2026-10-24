@@ -20,6 +20,13 @@ const steps = computed(() =>
     paragraphs: [study.steps[key]].flat(),
   })),
 )
+
+const techGroups = computed(() =>
+  [
+    { key: 'stack', label: ui.stack, items: study.stack },
+    { key: 'integrations', label: ui.integrations, items: study.integrations ?? [] },
+  ].filter((group) => group.items.length),
+)
 </script>
 
 <template>
@@ -73,18 +80,28 @@ const steps = computed(() =>
           {{ ui.imagePending }}
         </div>
 
-        <ul
-          class="section-case__stack"
-          role="list"
-          :aria-label="ui.stack"
-        >
-          <li
-            v-for="tech in study.stack"
-            :key="tech"
+        <dl class="section-case__tech">
+          <div
+            v-for="group in techGroups"
+            :key="group.key"
+            class="section-case__tech-group"
           >
-            {{ tech }}
-          </li>
-        </ul>
+            <dt class="section-case__tech-label">{{ group.label }}</dt>
+            <dd>
+              <ul
+                class="section-case__tech-list"
+                role="list"
+              >
+                <li
+                  v-for="item in group.items"
+                  :key="item"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
       </div>
     </div>
   </BaseSection>
@@ -162,15 +179,32 @@ const steps = computed(() =>
     }
   }
 
-  &__stack {
+  // Tabla de dos columnas: la etiqueta a la izquierda y sus elementos alineados a la derecha
+  &__tech {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: var(--space-2) var(--space-4);
+    margin-block-start: var(--space-4);
+    font-size: var(--text-14);
+  }
+
+  &__tech-group {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+
+  &__tech-label {
+    font-weight: 600;
+  }
+
+  &__tech-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-1) var(--space-4);
-    margin-block-start: var(--space-4);
     padding: 0;
     list-style: none;
     color: var(--color-text-soft);
-    font-size: var(--text-14);
   }
 }
 </style>

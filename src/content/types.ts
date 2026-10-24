@@ -74,6 +74,8 @@ export interface CaseStudy extends SectionMeta {
   /** Un párrafo por paso, o una lista si el paso tiene varios */
   steps: Record<CaseStepKey, string | string[]>
   stack: string[]
+  /** Servicios externos que conecta el caso; solo se muestra si tiene valor */
+  integrations?: string[]
   /** Foto representativa; mientras no llegue se muestra un hueco */
   image?: { src: string; alt: string }
 }
@@ -110,6 +112,7 @@ export interface UiLabels {
   mainStack: string
   present: string
   stack: string
+  integrations: string
   caseSteps: Record<CaseStepKey, string>
   imagePending: string
   alternateLanguage: { label: string; href: string; lang: Locale }

@@ -33,6 +33,7 @@ export const es: SiteContent = {
     mainStack: 'Tecnologías principales',
     present: 'actualidad',
     stack: 'Tecnologías',
+    integrations: 'Integraciones',
     caseSteps: {
       context: 'Contexto',
       contribution: 'Mi aportación',
@@ -126,6 +127,25 @@ export const es: SiteContent = {
       stack: ['C#', '.NET', 'SQL Server'],
     },
     {
+      key: 'automation',
+      id: 'automatizacion-n8n',
+      navLabel: 'Automatización',
+      title: 'Automatización de procesos comerciales',
+      company: 'Dreams',
+      steps: {
+        context:
+          'El equipo comercial necesitaba mantener los contactos actualizados entre herramientas, preparar correos con condiciones comerciales y centralizar sus visitas. Estas tareas requerían trasladar información manualmente y podían retrasar el seguimiento de los clientes.',
+        contribution:
+          'Desarrollé los tres flujos con n8n y JavaScript, integrando HubSpot, Gmail, Google Drive y Mailchimp mediante sus APIs. También me encargué del mantenimiento de la instancia y de configurar avisos para detectar y resolver errores.',
+        solution:
+          'Automaticé la sincronización de contactos, la creación de borradores con documentación adjunta y la centralización de la actividad comercial. Cuando los nodos de n8n no cubrían una necesidad, utilicé código y llamadas directas a las APIs, como para incorporar imágenes y adjuntos a los correos.',
+        result:
+          'Los tres flujos están en producción y reducen tareas manuales de gestión y seguimiento. Los contactos se sincronizan, las visitas quedan centralizadas y los correos se preparan para que el comercial los revise y envíe.',
+      },
+      stack: ['n8n', 'JavaScript', 'APIs REST'],
+      integrations: ['HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
+    },
+    {
       key: 'admin-panel',
       id: 'panel-de-administracion',
       navLabel: 'Panel',
@@ -142,24 +162,6 @@ export const es: SiteContent = {
           'El panel funciona igual en los navegadores habituales y gestionar archivos es más sencillo. [Pendiente: un dato concreto si lo tienes.]',
       },
       stack: ['C#', 'ASP.NET MVC', 'Razor', 'SQL Server'],
-    },
-    {
-      key: 'automation',
-      id: 'automatizacion-n8n',
-      navLabel: 'Automatización',
-      title: 'Automatización de procesos comerciales con n8n',
-      company: 'Dreams',
-      steps: {
-        context:
-          'El equipo de ventas trabajaba con información repartida entre HubSpot, Gmail, Google Drive y Mailchimp, y tareas como sincronizar contactos o preparar correos con documentación comercial se hacían a mano.',
-        contribution:
-          'Construyo y mantengo los flujos con n8n y JavaScript, y también la instancia de n8n: actualizaciones de versión y avisos por correo cuando un flujo falla.',
-        solution:
-          'Flujos que conectan las APIs de HubSpot, Gmail, Google Drive y Mailchimp para sincronizar contactos, preparar correos con la documentación comercial y centralizar la actividad de ventas. [Pendiente: describe un flujo concreto paso a paso.]',
-        result:
-          'Estos procesos ya no dependen de tareas manuales y, si un flujo falla, llega un aviso por correo para corregirlo. [Pendiente: un dato concreto si lo tienes.]',
-      },
-      stack: ['n8n', 'JavaScript', 'HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
     },
   ],
 

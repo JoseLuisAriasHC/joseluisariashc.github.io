@@ -14,7 +14,11 @@ const STEP_ORDER: CaseStepKey[] = ['context', 'contribution', 'solution', 'resul
 const headingId = useId()
 
 const steps = computed(() =>
-  STEP_ORDER.map((key) => ({ key, label: ui.caseSteps[key], text: study.steps[key] })),
+  STEP_ORDER.map((key) => ({
+    key,
+    label: ui.caseSteps[key],
+    paragraphs: [study.steps[key]].flat(),
+  })),
 )
 </script>
 
@@ -43,7 +47,13 @@ const steps = computed(() =>
       >
         <template #default="{ item }">
           <h3 class="section-case__step-label">{{ item.label }}</h3>
-          <p class="section-case__step-text">{{ item.text }}</p>
+          <p
+            v-for="(paragraph, index) in item.paragraphs"
+            :key="index"
+            class="section-case__step-text"
+          >
+            {{ paragraph }}
+          </p>
         </template>
       </BaseFlow>
 
@@ -122,6 +132,10 @@ const steps = computed(() =>
     margin-block-start: var(--space-1);
     color: var(--color-text-soft);
     font-size: var(--text-16);
+
+    & + & {
+      margin-block-start: var(--space-3);
+    }
   }
 
   &__aside {

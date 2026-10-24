@@ -32,7 +32,6 @@ export const es: SiteContent = {
     viewLinkedin: 'Ver perfil de LinkedIn',
     mainStack: 'Tecnologías principales',
     present: 'actualidad',
-    featuredWork: 'Trabajos destacados',
     stack: 'Tecnologías',
     caseSteps: {
       context: 'Contexto',
@@ -50,7 +49,7 @@ export const es: SiteContent = {
     headline: 'Desarrollo backend y automatización',
     stack: ['C#', '.NET', 'SQL Server', 'n8n'],
     intro:
-      'Desarrollo aplicaciones web con C#, .NET y SQL Server, modernizo sistemas existentes y automatizo procesos con n8n. Me gusta entender cómo funciona un proceso, detectar dónde se complica y convertirlo en una solución más sencilla de utilizar y mantener.',
+      'Desarrollo aplicaciones web, modernizo sistemas existentes y automatizo procesos empresariales. Mi trabajo se centra en el backend y la integración de sistemas, desde paneles de administración hasta flujos que conectan distintas herramientas. Me gusta entender cómo funciona cada proceso y desarrollar soluciones que faciliten el trabajo diario y sean sencillas de mantener.',
     photoAlt: 'Retrato de Jose Luis Arias',
   },
 
@@ -66,8 +65,7 @@ export const es: SiteContent = {
         company: 'Dreams',
         period: { start: '2025-10' },
         summary:
-          'Aplicaciones web con C#, .NET y SQL Server, modernización de sistemas y automatización de procesos. También integración de datos de ERP para el seguimiento de reparaciones, flujos con IA y mantenimiento de APIs en Laravel con despliegues en Docker y GitLab CI/CD.',
-        cases: ['admin-panel', 'automation', 'migration'],
+          'Desarrollo aplicaciones web con C#, .NET y SQL Server, y participo en la modernización de sistemas, la integración con ERP y la migración de datos. También desarrollo y mantengo automatizaciones con n8n, JavaScript y APIs para conectar herramientas comerciales, y trabajo con modelos de IA para seleccionar noticias y consultar documentación técnica.',
       },
       {
         key: 'dreams-internship',
@@ -75,7 +73,7 @@ export const es: SiteContent = {
         company: 'Dreams',
         period: { start: '2025-01', end: '2025-10' },
         summary:
-          'Desarrollo y mantenimiento de aplicaciones con Laravel y ASP.NET Core: funcionalidades CRUD, mejoras en paneles de administración, la renovación de una página de inicio con Vue, autenticación y mapas con Google Maps.',
+          'Participé en el desarrollo y mantenimiento de aplicaciones con Laravel y ASP.NET Core, incorporando funcionalidades y resolviendo incidencias. Trabajé en paneles de administración, autenticación y renovación de interfaces con Vue, JavaScript y vistas Blade y Razor.',
       },
       {
         key: 'schnell-internship',
@@ -83,7 +81,7 @@ export const es: SiteContent = {
         company: 'Schnell Software',
         period: { start: '2023-03', end: '2023-06' },
         summary:
-          'Prácticas de desarrollo web con Xataface. [Pendiente: una frase sobre lo que hiciste.]',
+          'Realicé mejoras de interfaz en aplicaciones web y desarrollé funcionalidades de lectura y procesamiento de archivos. También participé en la corrección de errores y la incorporación de funcionalidades de backend.',
       },
     ],
     educationTitle: 'Formación',
@@ -94,21 +92,39 @@ export const es: SiteContent = {
         center: 'NETT Digital School',
         period: { start: '2025-01', end: '2025-09' },
         summary:
-          'Desarrollo web full stack: PHP con Laravel y Symfony, Vue y Angular, WordPress y PrestaShop, SEO técnico y metodologías ágiles.',
+          'Formación en desarrollo web full stack con PHP, frameworks de backend y frontend, bases de datos y gestores de contenido. Incluye control de versiones, SEO técnico, usabilidad y metodologías ágiles.',
       },
       {
         key: 'dam',
         title: 'Técnico Superior en Desarrollo de Aplicaciones Multiplataforma',
         center: 'Izquierdo FP',
-        period: { start: '2020-09', end: '2023-09' },
+        period: { start: '2021-09', end: '2023-09' },
         summary:
-          'Programación orientada a objetos con Java, bases de datos relacionales con SQL y administración de sistemas ERP y CRM.',
+          'Formación en programación orientada a objetos, bases de datos relacionales y desarrollo de aplicaciones web y móviles, además de administración y programación de sistemas ERP y CRM.',
         grade: 'Nota: 9',
       },
     ],
   },
 
   cases: [
+    {
+      key: 'b2b-platform',
+      id: 'plataforma-b2b',
+      navLabel: 'Plataforma B2B',
+      title: 'Modernización de una plataforma B2B y migración selectiva de datos',
+      company: 'Dreams',
+      steps: {
+        context:
+          'Una plataforma B2B para distintos clientes había acumulado funcionalidades y parches que dificultaban su mantenimiento. Su modernización requería reorganizar el código y los datos conservando las particularidades de cada cliente.',
+        contribution:
+          'Desarrollé la migración de datos y ficheros, el catálogo y el carrito, con sus validaciones según contrato, rol y usuario. También propuse mejoras del modelo de datos y realicé pruebas funcionales.',
+        solution:
+          'Creé una aplicación de consola que migra los contratos seleccionados y sus datos relacionados mediante scripts SQL, respetando las dependencias entre tablas. Al desarrollar el catálogo, también simplifiqué su estructura: una propuesta aceptada fue sustituir la relación N:M entre productos y variantes por una 1:N, más acorde con su funcionamiento.',
+        result:
+          'Catálogo y carrito adaptados y probados, con un proceso de migración al nuevo modelo. La plataforma sigue en desarrollo y la migración evoluciona con sus necesidades.',
+      },
+      stack: ['C#', '.NET', 'SQL Server'],
+    },
     {
       key: 'admin-panel',
       id: 'panel-de-administracion',
@@ -144,24 +160,6 @@ export const es: SiteContent = {
           'Estos procesos ya no dependen de tareas manuales y, si un flujo falla, llega un aviso por correo para corregirlo. [Pendiente: un dato concreto si lo tienes.]',
       },
       stack: ['n8n', 'JavaScript', 'HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
-    },
-    {
-      key: 'migration',
-      id: 'migracion-de-datos',
-      navLabel: 'Migración',
-      title: 'Migración selectiva de datos',
-      company: 'Dreams',
-      steps: {
-        context:
-          'Una plataforma B2B se estaba modernizando con una nueva estructura de código y de datos, y había que trasladar solo una parte de la información del sistema anterior.',
-        contribution:
-          'Analicé el sistema heredado y desarrollé el proceso de migración entre bases de datos, en coordinación con el responsable técnico y proponiendo mejoras en la lógica y el modelo de datos.',
-        solution:
-          'Un proceso que selecciona los registros necesarios junto con sus datos relacionados y les aplica reglas de transformación, cálculo y filtrado para adaptarlos al nuevo modelo. [Pendiente: cómo lo ejecutaste y validaste.]',
-        result:
-          '[Pendiente: qué quedó resuelto; por ejemplo, qué datos se migraron y cómo se comprobó que eran correctos.]',
-      },
-      stack: ['C#', '.NET', 'SQL Server'],
     },
   ],
 

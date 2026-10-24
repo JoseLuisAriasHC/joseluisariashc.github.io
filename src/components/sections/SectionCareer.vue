@@ -3,21 +3,17 @@ import { computed, useId } from 'vue'
 import BaseFlow from '@/components/base/BaseFlow.vue'
 import BaseSection from '@/components/base/BaseSection.vue'
 import type { Locale } from '@/content/locale'
-import type { CaseLink } from '@/content/navigation'
 import type { CareerContent, UiLabels } from '@/content/types'
 import { formatPeriod } from '@/utils/formatPeriod'
 import SectionCareerItem from './SectionCareerItem.vue'
 
-const { career, caseLinks, ui, locale } = defineProps<{
+const { career, ui, locale } = defineProps<{
   career: CareerContent
-  caseLinks: CaseLink[]
   ui: UiLabels
   locale: Locale
 }>()
 
 const headingId = useId()
-
-const caseLinkByKey = computed(() => new Map(caseLinks.map((link) => [link.key, link])))
 
 const jobs = computed(() =>
   career.jobs.map((job) => ({
@@ -25,7 +21,6 @@ const jobs = computed(() =>
     heading: job.role,
     meta: `${job.company}, ${formatPeriod(job.period, locale, ui.present)}`,
     summary: job.summary,
-    cases: (job.cases ?? []).flatMap((key) => caseLinkByKey.value.get(key) ?? []),
   })),
 )
 
@@ -66,25 +61,7 @@ const education = computed(() =>
               :heading="item.heading"
               :meta="item.meta"
               :summary="item.summary"
-            >
-              <div
-                v-if="item.cases.length"
-                class="section-career__cases"
-              >
-                <p class="section-career__cases-label">{{ ui.featuredWork }}</p>
-                <ul
-                  class="section-career__cases-list"
-                  role="list"
-                >
-                  <li
-                    v-for="link in item.cases"
-                    :key="link.key"
-                  >
-                    <a :href="`#${link.id}`">{{ link.title }}</a>
-                  </li>
-                </ul>
-              </div>
-            </SectionCareerItem>
+            />
           </template>
         </BaseFlow>
       </div>
@@ -142,23 +119,6 @@ const education = computed(() =>
   &__flow {
     --flow-gap: var(--space-8);
     --node-offset: 0.25rem;
-  }
-
-  &__cases {
-    margin-block-start: var(--space-3);
-    font-size: var(--text-14);
-  }
-
-  &__cases-label {
-    color: var(--color-text-soft);
-  }
-
-  &__cases-list {
-    display: grid;
-    gap: var(--space-1);
-    margin-block-start: var(--space-1);
-    padding: 0;
-    list-style: none;
   }
 
   &__grade {

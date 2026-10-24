@@ -1,7 +1,7 @@
 import type { Locale } from './locale'
 
-/** Clave de cada caso, igual en todos los idiomas (los enlaces de la trayectoria la usan) */
-export type CaseKey = 'admin-panel' | 'automation' | 'migration'
+/** Clave de cada caso, igual en todos los idiomas */
+export type CaseKey = 'b2b-platform' | 'admin-panel' | 'automation'
 
 export type CaseStepKey = 'context' | 'contribution' | 'solution' | 'result'
 
@@ -48,8 +48,6 @@ export interface Job {
   company: string
   period: Period
   summary: string
-  /** Casos que se enlazan desde este puesto */
-  cases?: CaseKey[]
 }
 
 export interface Education {
@@ -73,7 +71,8 @@ export interface CaseStudy extends SectionMeta {
   key: CaseKey
   title: string
   company: string
-  steps: Record<CaseStepKey, string>
+  /** Un párrafo por paso, o una lista si el paso tiene varios */
+  steps: Record<CaseStepKey, string | string[]>
   stack: string[]
   /** Foto representativa; mientras no llegue se muestra un hueco */
   image?: { src: string; alt: string }
@@ -110,7 +109,6 @@ export interface UiLabels {
   viewLinkedin: string
   mainStack: string
   present: string
-  featuredWork: string
   stack: string
   caseSteps: Record<CaseStepKey, string>
   imagePending: string

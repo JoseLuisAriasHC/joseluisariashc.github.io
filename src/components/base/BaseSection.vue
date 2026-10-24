@@ -21,6 +21,10 @@
     min-height: 100svh;
     padding-block: var(--space-16);
     scroll-snap-align: start;
+
+    @media (max-height: $snap-compact-height) {
+      padding-block: var(--space-4);
+    }
   }
 }
 

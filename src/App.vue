@@ -12,7 +12,6 @@ import type { SiteContent } from '@/content/types'
 const { content } = defineProps<{ content: SiteContent }>()
 
 const sections = computed(() => sectionLinks(content))
-const caseLinks = computed(() => content.cases.map(({ key, id, title }) => ({ key, id, title })))
 const workHref = computed(() => `#${content.cases[0]?.id ?? ''}`)
 
 const { activeIndex } = useActiveSection(
@@ -42,7 +41,6 @@ const { activeIndex } = useActiveSection(
     />
     <SectionCareer
       :career="content.career"
-      :case-links="caseLinks"
       :ui="content.ui"
       :locale="content.locale"
     />

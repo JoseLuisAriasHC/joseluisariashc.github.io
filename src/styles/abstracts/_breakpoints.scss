@@ -8,3 +8,6 @@ $breakpoints: (
 
 // Por debajo de esta altura el scroll por secciones cortaría el contenido
 $snap-min-height: 40rem;
+
+// Por debajo de esta altura las secciones reducen su margen vertical para que quepan las más largas
+$snap-compact-height: 56rem;

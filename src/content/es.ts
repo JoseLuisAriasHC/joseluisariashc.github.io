@@ -150,6 +150,26 @@ export const es: SiteContent = {
           title: 'Automatización con n8n e IA: 7 lecciones de proyectos reales',
           href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/automatizacion-con-n8n-e-ia-7-lecciones-de-proyectos-reales',
         },
+      ],
+    },
+    {
+      key: 'news-selection',
+      id: 'seleccion-de-noticias',
+      navLabel: 'Noticias con IA',
+      title: 'Selección y validación de noticias con IA',
+      company: 'Dreams',
+      steps: {
+        context:
+          'Un equipo de comunicación necesitaba revisar distintos medios para localizar noticias relevantes de su sector. La búsqueda exigía aplicar criterios editoriales y descartar duplicados entre numerosas publicaciones.',
+        contribution:
+          'Desarrollé el flujo con n8n, modelos de lenguaje y JavaScript. Ajusté las instrucciones y la selección de modelos, separé las tareas de los agentes e incorporé comprobaciones mediante código para validar sus resultados.',
+        solution:
+          'El flujo recopila noticias y utiliza un agente para evaluar su relevancia y otro para detectar duplicados y comprobar su ámbito geográfico. Antes de preparar el correo, el código contrasta los enlaces con las fuentes originales y recupera sus titulares, evitando que la IA los empareje incorrectamente.',
+        result:
+          'El flujo genera un resumen por correo con las noticias seleccionadas y sus enlaces originales. Combina el criterio editorial aplicado por los modelos con validaciones de código para reducir la revisión manual y controlar errores.',
+      },
+      stack: ['n8n', 'Modelos de lenguaje', 'JavaScript'],
+      articles: [
         {
           title: 'ChatGPT, Claude o Gemini: qué IA elegir para tu empresa',
           href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/chatgpt-claude-o-gemini-que-ia-elegir-para-tu-empresa',

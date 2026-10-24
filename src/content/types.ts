@@ -1,7 +1,7 @@
 import type { Locale } from './locale'
 
 /** Clave de cada caso, igual en todos los idiomas */
-export type CaseKey = 'b2b-platform' | 'admin-panel' | 'automation'
+export type CaseKey = 'b2b-platform' | 'automation' | 'news-selection' | 'admin-panel'
 
 export type CaseStepKey = 'context' | 'contribution' | 'solution' | 'result'
 

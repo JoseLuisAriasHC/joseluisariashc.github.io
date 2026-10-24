@@ -34,6 +34,7 @@ export const es: SiteContent = {
     present: 'actualidad',
     stack: 'Tecnologías',
     integrations: 'Integraciones',
+    articles: 'Artículos',
     caseSteps: {
       context: 'Contexto',
       contribution: 'Mi aportación',
@@ -144,6 +145,16 @@ export const es: SiteContent = {
       },
       stack: ['n8n', 'JavaScript', 'APIs REST'],
       integrations: ['HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
+      articles: [
+        {
+          title: 'Automatización con n8n e IA: 7 lecciones de proyectos reales',
+          href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/automatizacion-con-n8n-e-ia-7-lecciones-de-proyectos-reales',
+        },
+        {
+          title: 'ChatGPT, Claude o Gemini: qué IA elegir para tu empresa',
+          href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/chatgpt-claude-o-gemini-que-ia-elegir-para-tu-empresa',
+        },
+      ],
     },
     {
       key: 'admin-panel',

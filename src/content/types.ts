@@ -67,6 +67,11 @@ export interface CareerContent extends SectionMeta {
   education: Education[]
 }
 
+export interface CaseArticle {
+  title: string
+  href: string
+}
+
 export interface CaseStudy extends SectionMeta {
   key: CaseKey
   title: string
@@ -76,6 +81,8 @@ export interface CaseStudy extends SectionMeta {
   stack: string[]
   /** Servicios externos que conecta el caso; solo se muestra si tiene valor */
   integrations?: string[]
+  /** Artículos publicados sobre el tema del caso; solo se muestran si hay alguno */
+  articles?: CaseArticle[]
   /** Foto representativa; mientras no llegue se muestra un hueco */
   image?: { src: string; alt: string }
 }
@@ -113,6 +120,7 @@ export interface UiLabels {
   present: string
   stack: string
   integrations: string
+  articles: string
   caseSteps: Record<CaseStepKey, string>
   imagePending: string
   alternateLanguage: { label: string; href: string; lang: Locale }

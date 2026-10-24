@@ -80,13 +80,13 @@ const techGroups = computed(() =>
           {{ ui.imagePending }}
         </div>
 
-        <dl class="section-case__tech">
+        <dl class="section-case__meta">
           <div
             v-for="group in techGroups"
             :key="group.key"
-            class="section-case__tech-group"
+            class="section-case__meta-group"
           >
-            <dt class="section-case__tech-label">{{ group.label }}</dt>
+            <dt class="section-case__meta-label">{{ group.label }}</dt>
             <dd>
               <ul
                 class="section-case__tech-list"
@@ -97,6 +97,33 @@ const techGroups = computed(() =>
                   :key="item"
                 >
                   {{ item }}
+                </li>
+              </ul>
+            </dd>
+          </div>
+
+          <div
+            v-if="study.articles?.length"
+            class="section-case__meta-group"
+          >
+            <dt class="section-case__meta-label">{{ ui.articles }}</dt>
+            <dd>
+              <ul
+                class="section-case__articles"
+                role="list"
+              >
+                <li
+                  v-for="article in study.articles"
+                  :key="article.href"
+                >
+                  <a
+                    :href="article.href"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {{ article.title }}
+                    <span class="visually-hidden">({{ ui.opensInNewTab }})</span>
+                  </a>
                 </li>
               </ul>
             </dd>
@@ -180,7 +207,7 @@ const techGroups = computed(() =>
   }
 
   // Tabla de dos columnas: la etiqueta a la izquierda y sus elementos alineados a la derecha
-  &__tech {
+  &__meta {
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
     gap: var(--space-2) var(--space-4);
@@ -188,13 +215,13 @@ const techGroups = computed(() =>
     font-size: var(--text-14);
   }
 
-  &__tech-group {
+  &__meta-group {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: subgrid;
   }
 
-  &__tech-label {
+  &__meta-label {
     font-weight: 600;
   }
 
@@ -205,6 +232,14 @@ const techGroups = computed(() =>
     padding: 0;
     list-style: none;
     color: var(--color-text-soft);
+  }
+
+  // Un artículo por línea: los títulos son largos
+  &__articles {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
   }
 }
 </style>

@@ -41,3 +41,4 @@ __screenshots__/
 # Fotos e imágenes originales: en el proyecto solo van las versiones optimizadas de src/assets
 /JKZN1335*
 /*.png
+/*.webp

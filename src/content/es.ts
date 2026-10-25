@@ -149,6 +149,10 @@ export const es: SiteContent = {
       },
       stack: ['n8n', 'JavaScript', 'APIs REST'],
       integrations: ['HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
+      image: {
+        ...caseImages.automation,
+        alt: 'Flujo de n8n que comprueba el tamaño de los adjuntos, construye el mensaje MIME y crea el borrador mediante la API de Gmail.',
+      },
       articles: [
         {
           title: 'Automatización con n8n e IA: 7 lecciones de proyectos reales',
@@ -174,6 +178,10 @@ export const es: SiteContent = {
           'El flujo genera un resumen por correo con las noticias seleccionadas y sus enlaces originales. Combina el criterio editorial aplicado por los modelos con validaciones de código para reducir la revisión manual y controlar errores.',
       },
       stack: ['n8n', 'Modelos de lenguaje', 'JavaScript'],
+      image: {
+        ...caseImages['news-selection'],
+        alt: 'Flujo de n8n con dos agentes de IA: el primero evalúa la relevancia de las noticias y el segundo filtra las repetidas, con un paso de código entre ambos que procesa y limpia los resultados.',
+      },
       articles: [
         {
           title: 'ChatGPT, Claude o Gemini: qué IA elegir para tu empresa',
@@ -199,6 +207,10 @@ export const es: SiteContent = {
           'Un panel actualizado para navegadores actuales, con la carga de archivos integrada y una gestión más sencilla, conservando las funcionalidades del sistema anterior.',
       },
       stack: ['C#', 'ASP.NET MVC', 'Razor', 'SQL Server'],
+      image: {
+        ...caseImages['admin-panel'],
+        alt: 'Ilustración de la renovación del panel: el panel antiguo al fondo y, delante, el nuevo con las mismas secciones, la zona de carga de archivos con su progreso y la tabla de usuarios con sus permisos.',
+      },
     },
   ],
 

@@ -149,6 +149,10 @@ export const en: SiteContent = {
       },
       stack: ['n8n', 'JavaScript', 'REST APIs'],
       integrations: ['HubSpot', 'Gmail', 'Google Drive', 'Mailchimp'],
+      image: {
+        ...caseImages.automation,
+        alt: 'n8n workflow that checks the attachment size, builds the MIME message and creates the draft through the Gmail API.',
+      },
       articles: [
         {
           title: 'Automation with n8n and AI: 7 lessons from real projects (in Spanish)',
@@ -174,6 +178,10 @@ export const en: SiteContent = {
           'The workflow produces an email digest with the selected news and their original links. It combines the editorial judgment applied by the models with code validation to reduce manual review and keep errors under control.',
       },
       stack: ['n8n', 'Language models', 'JavaScript'],
+      image: {
+        ...caseImages['news-selection'],
+        alt: 'n8n workflow with two AI agents: the first assesses how relevant each news item is and the second filters out duplicates, with a code step between them that processes and cleans the results.',
+      },
       articles: [
         {
           title: 'ChatGPT, Claude or Gemini: which AI to choose for your business (in Spanish)',
@@ -199,6 +207,10 @@ export const en: SiteContent = {
           'A panel updated for current browsers, with built-in file uploads and simpler management, keeping the features of the previous system.',
       },
       stack: ['C#', 'ASP.NET MVC', 'Razor', 'SQL Server'],
+      image: {
+        ...caseImages['admin-panel'],
+        alt: 'Illustration of the panel renewal: the old panel in the background and, in front, the new one with the same sections, the file upload area with its progress and the users table with their permissions.',
+      },
     },
   ],
 

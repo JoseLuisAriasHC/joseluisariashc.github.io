@@ -1,3 +1,7 @@
+import automation840 from '@/assets/img/cases/automatizacion-840.webp'
+import newsSelection1000 from '@/assets/img/cases/noticias-ia-1000.webp'
+import adminPanel800 from '@/assets/img/cases/panel-administracion-800.webp'
+import adminPanel1448 from '@/assets/img/cases/panel-administracion-1448.webp'
 import b2bPlatform800 from '@/assets/img/cases/plataforma-b2b-800.webp'
 import b2bPlatform1448 from '@/assets/img/cases/plataforma-b2b-1448.webp'
 import type { CaseImageSource, CaseKey } from './types'
@@ -7,5 +11,19 @@ export const caseImages = {
   'b2b-platform': {
     src: b2bPlatform1448,
     srcset: `${b2bPlatform800} 800w, ${b2bPlatform1448} 1448w`,
+  },
+  // Recorte de una captura real del flujo, publicada en el blog de Dreams
+  automation: {
+    src: automation840,
+    srcset: `${automation840} 840w`,
+  },
+  // Captura real: la franja de los dos agentes, con el fondo del lienzo prolongado hasta 4:3
+  'news-selection': {
+    src: newsSelection1000,
+    srcset: `${newsSelection1000} 1000w`,
+  },
+  'admin-panel': {
+    src: adminPanel1448,
+    srcset: `${adminPanel800} 800w, ${adminPanel1448} 1448w`,
   },
 } satisfies Partial<Record<CaseKey, CaseImageSource>>

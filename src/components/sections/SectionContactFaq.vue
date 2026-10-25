@@ -77,12 +77,22 @@ const group = useId()
       height: var(--node-size);
       border: var(--line-width) solid var(--color-signal);
       border-radius: 50%;
-      transition: background-color var(--duration-quick) var(--ease-out);
+      transition:
+        background-color var(--duration-quick) var(--ease-out),
+        box-shadow var(--duration-quick) var(--ease-out);
     }
   }
 
   &__item[open] &__question::before {
     background-color: var(--color-signal);
+  }
+
+  // Con ratón, el halo del nodo anuncia que la pregunta se puede abrir, como las tecnologías de
+  // la portada. El relleno queda para la pregunta abierta
+  @media (hover: hover) {
+    &__question:hover::before {
+      box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-signal) 25%, transparent);
+    }
   }
 
   &__answer {

@@ -11,8 +11,7 @@ export const es: SiteContent = {
     links: {
       linkedin: 'https://www.linkedin.com/in/jose-luis-a-66aab828a/',
       github: 'https://github.com/JoseLuisAriasHC',
-      // Provisional: se cambia al final
-      email: 'contacto@example.com',
+      email: 'joseluisariashc@gmail.com',
     },
   },
 
@@ -205,22 +204,28 @@ export const es: SiteContent = {
     faqTitle: 'Preguntas frecuentes',
     faq: [
       {
-        key: 'contribution',
-        question: '¿Qué parte de cada trabajo es tuya?',
+        key: 'value',
+        question: '¿Qué puedo aportar a tu equipo?',
         answer:
-          'Son trabajos de equipo en Dreams. En cada caso, el apartado «Mi aportación» explica qué hice yo.',
+          'Experiencia en aplicaciones reales: desarrollar funcionalidades, interpretar reglas de negocio y trabajar con sistemas existentes. Además de implementar lo solicitado, analizo cómo encaja en el conjunto y propongo mejoras cuando detecto una forma más sencilla de resolverlo.',
       },
       {
-        key: 'code',
-        question: '¿Puedo ver el código?',
+        key: 'background',
+        question: '¿Qué respalda mi trabajo?',
         answer:
-          'No, porque es código de clientes y es confidencial. Por eso cada caso explica el problema, el enfoque y el resultado, y las imágenes son representativas.',
+          'Una titulación oficial en Desarrollo de Aplicaciones Multiplataforma, formación complementaria en desarrollo web y experiencia profesional desarrollando y manteniendo aplicaciones para clientes reales.',
       },
       {
-        key: 'ai',
-        question: '¿Trabajas con IA?',
+        key: 'automation-criteria',
+        question: '¿Cómo decido qué conviene automatizar?',
         answer:
-          'Sí. He desarrollado flujos que seleccionan y validan noticias con modelos de lenguaje y un prototipo de asistente de soporte basado en documentación técnica, combinando el modelo con reglas de negocio y comprobaciones en código.',
+          'Primero analizo cómo funciona el proceso, qué herramientas intervienen y qué excepciones aparecen. Valoro qué pasos se pueden automatizar y cuáles necesitan revisión humana, buscando reducir trabajo manual sin complicar el proceso.',
+      },
+      {
+        key: 'automation-maintenance',
+        question: '¿Cómo cuido que una automatización siga funcionando?',
+        answer:
+          'Además de construir el flujo, me ocupo de las validaciones, los avisos de error y el mantenimiento. Mi experiencia incluye resolver incidencias y ajustar las integraciones cuando cambian las herramientas o las necesidades del equipo.',
       },
     ],
   },

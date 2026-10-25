@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import SocialLinks from '@/components/common/SocialLinks.vue'
 import type { SectionLink } from '@/content/navigation'
-import type { Person, UiLabels } from '@/content/types'
+import type { LanguageLink, Person, UiLabels } from '@/content/types'
 import SiteFrameLogo from './SiteFrameLogo.vue'
 import SiteFrameMenu from './SiteFrameMenu.vue'
 import SiteFrameNav from './SiteFrameNav.vue'
@@ -14,6 +14,8 @@ const { ui, sections, activeIndex } = defineProps<{
   ui: UiLabels
   sections: SectionLink[]
   activeIndex: number
+  /** Enlace al otro idioma, ya apuntando a la sección activa */
+  language: LanguageLink
 }>()
 
 const homeHref = computed(() => `#${sections[0]?.id ?? ''}`)
@@ -65,11 +67,11 @@ const scrollCue = computed(() => {
       <div class="site-frame__actions">
         <a
           class="site-frame__language"
-          :href="ui.alternateLanguage.href"
-          :hreflang="ui.alternateLanguage.lang"
-          :lang="ui.alternateLanguage.lang"
+          :href="language.href"
+          :hreflang="language.lang"
+          :lang="language.lang"
         >
-          {{ ui.alternateLanguage.label }}
+          {{ language.label }}
         </a>
         <BaseButton
           :href="contactHref"
@@ -94,6 +96,7 @@ const scrollCue = computed(() => {
         :ui="ui"
         :sections="sections"
         :active-index="activeIndex"
+        :language="language"
       />
     </div>
   </div>

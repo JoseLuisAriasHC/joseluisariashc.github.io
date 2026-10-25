@@ -70,6 +70,8 @@ export interface CareerContent extends SectionMeta {
 export interface CaseArticle {
   title: string
   href: string
+  /** Idioma del artículo, que puede no ser el de la página */
+  lang: Locale
 }
 
 export interface CaseStudy extends SectionMeta {
@@ -100,6 +102,13 @@ export interface ContactContent extends SectionMeta {
   faq: FaqItem[]
 }
 
+/** Enlace a la versión de la página en otro idioma */
+export interface LanguageLink {
+  label: string
+  href: string
+  lang: Locale
+}
+
 /** Textos de la interfaz que no pertenecen a una sección concreta */
 export interface UiLabels {
   skipToContent: string
@@ -123,7 +132,7 @@ export interface UiLabels {
   articles: string
   caseSteps: Record<CaseStepKey, string>
   imagePending: string
-  alternateLanguage: { label: string; href: string; lang: Locale }
+  alternateLanguage: LanguageLink
 }
 
 export interface SiteContent {

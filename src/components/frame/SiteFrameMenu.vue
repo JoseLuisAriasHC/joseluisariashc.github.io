@@ -4,7 +4,7 @@ import BaseButton from '@/components/base/BaseButton.vue'
 import BaseFlow from '@/components/base/BaseFlow.vue'
 import SocialLinks from '@/components/common/SocialLinks.vue'
 import type { SectionLink } from '@/content/navigation'
-import type { Person, UiLabels } from '@/content/types'
+import type { LanguageLink, Person, UiLabels } from '@/content/types'
 import SiteFrameLogo from './SiteFrameLogo.vue'
 
 const { sections } = defineProps<{
@@ -12,6 +12,7 @@ const { sections } = defineProps<{
   ui: UiLabels
   sections: SectionLink[]
   activeIndex: number
+  language: LanguageLink
 }>()
 
 const homeHref = computed(() => `#${sections[0]?.id ?? ''}`)
@@ -81,11 +82,11 @@ function close() {
       <div class="site-frame-menu__footer">
         <a
           class="site-frame-menu__language"
-          :href="ui.alternateLanguage.href"
-          :hreflang="ui.alternateLanguage.lang"
-          :lang="ui.alternateLanguage.lang"
+          :href="language.href"
+          :hreflang="language.lang"
+          :lang="language.lang"
         >
-          {{ ui.alternateLanguage.label }}
+          {{ language.label }}
         </a>
         <SocialLinks
           class="site-frame-menu__social"

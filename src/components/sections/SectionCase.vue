@@ -118,6 +118,7 @@ const techGroups = computed(() =>
                 >
                   <a
                     :href="article.href"
+                    :hreflang="article.lang"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

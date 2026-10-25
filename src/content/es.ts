@@ -148,6 +148,7 @@ export const es: SiteContent = {
         {
           title: 'Automatización con n8n e IA: 7 lecciones de proyectos reales',
           href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/automatizacion-con-n8n-e-ia-7-lecciones-de-proyectos-reales',
+          lang: 'es',
         },
       ],
     },
@@ -172,6 +173,7 @@ export const es: SiteContent = {
         {
           title: 'ChatGPT, Claude o Gemini: qué IA elegir para tu empresa',
           href: 'https://www.dreams.es/transformacion-digital/ia-automatizacion/chatgpt-claude-o-gemini-que-ia-elegir-para-tu-empresa',
+          lang: 'es',
         },
       ],
     },

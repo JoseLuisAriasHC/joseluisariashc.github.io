@@ -6,10 +6,14 @@ import SectionCase from '@/components/sections/SectionCase.vue'
 import SectionContact from '@/components/sections/SectionContact.vue'
 import SectionHero from '@/components/sections/SectionHero.vue'
 import { useActiveSection } from '@/composables/useActiveSection'
-import { sectionLinks } from '@/content/navigation'
+import { languageLinkTo, sectionLinks, type SectionLink } from '@/content/navigation'
 import type { SiteContent } from '@/content/types'
 
-const { content } = defineProps<{ content: SiteContent }>()
+const { content, alternateSections } = defineProps<{
+  content: SiteContent
+  /** Secciones del otro idioma, para que el cambio de idioma conserve la sección */
+  alternateSections: SectionLink[]
+}>()
 
 const sections = computed(() => sectionLinks(content))
 const workHref = computed(() => `#${content.cases[0]?.id ?? ''}`)
@@ -17,6 +21,14 @@ const workHref = computed(() => `#${content.cases[0]?.id ?? ''}`)
 const { activeIndex } = useActiveSection(
   sections.value.map((section) => section.id),
   { syncHash: true },
+)
+
+const languageLink = computed(() =>
+  languageLinkTo(
+    content.ui.alternateLanguage,
+    alternateSections,
+    sections.value[activeIndex.value]?.key,
+  ),
 )
 </script>
 
@@ -26,6 +38,7 @@ const { activeIndex } = useActiveSection(
     :ui="content.ui"
     :sections="sections"
     :active-index="activeIndex"
+    :language="languageLink"
   />
 
   <main

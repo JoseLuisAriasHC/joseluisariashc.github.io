@@ -240,7 +240,7 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
   }
 }
 
-// El único momento de movimiento de la página, una vez al cargar: el titular aparece, la línea
+// El único movimiento que no provoca el visitante, una vez al cargar: el titular aparece, la línea
 // entra por la izquierda, recorre las tecnologías y, al llegar a la foto, enciende su anillo.
 // La foto se ve desde el principio (no retrasa la carga); solo cambia el color del anillo.
 // Con «reducir movimiento» activado no se anima nada y se ve directamente el estado final.
@@ -287,6 +287,91 @@ const portraitSrcset = `${portrait480} 480w, ${portrait960} 960w`
       &__frame {
         animation: hero-light 500ms var(--ease-out) calc(var(--t-arrival) + 180ms) both;
       }
+    }
+  }
+}
+
+// Respuesta al ratón: al pasar por una tecnología, la línea se ilumina tramo a tramo desde ella
+// hasta la foto; al pasar por la foto, se ilumina entera. En pantallas táctiles no hay hover.
+// El nodo crece con «scale» y no con «transform», que ya usa la animación de carga
+@media (hover: hover) {
+  .section-hero__tech {
+    transition: color var(--duration-quick) var(--ease-out);
+
+    &::before {
+      transition:
+        scale var(--duration-quick) var(--ease-out),
+        box-shadow var(--duration-quick) var(--ease-out);
+    }
+
+    &::after {
+      transition:
+        background-color 160ms linear,
+        box-shadow 160ms linear;
+    }
+
+    &:hover {
+      color: var(--color-text);
+
+      &::before {
+        scale: 1.6;
+        box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-signal) 25%, transparent);
+      }
+    }
+  }
+
+  .section-hero__stack::before,
+  .section-hero__photo::before {
+    transition:
+      background-color 160ms linear,
+      box-shadow 160ms linear;
+  }
+
+  .section-hero__frame {
+    transition: box-shadow var(--duration-base) var(--ease-out);
+  }
+
+  // Una línea de 1 px apenas cambia de color: el resplandor hace visible que está encendida
+  .section-hero__layout {
+    --line-glow: 0 0 0.5rem color-mix(in srgb, var(--color-signal) 70%, transparent);
+  }
+
+  // Posición desde la que se enciende la línea: la tecnología señalada o, con la foto, -1,
+  // el tramo que entra por la izquierda
+  @for $n from 1 through 8 {
+    .section-hero__layout:has(.section-hero__tech:nth-child(#{$n}):hover) {
+      --lit-from: #{$n - 1};
+    }
+  }
+
+  .section-hero__layout:has(.section-hero__frame:hover) {
+    --lit-from: -1;
+
+    .section-hero__stack::before {
+      background-color: var(--color-signal);
+      box-shadow: var(--line-glow);
+    }
+  }
+
+  // Cada tramo espera a que se encienda el anterior, así la luz viaja hacia la foto
+  .section-hero__tech:hover::after,
+  .section-hero__tech:hover ~ .section-hero__tech::after,
+  .section-hero__layout:has(.section-hero__frame:hover) .section-hero__tech::after {
+    background-color: var(--color-signal);
+    box-shadow: var(--line-glow);
+    transition-delay: calc((var(--i) - var(--lit-from)) * 80ms);
+  }
+
+  .section-hero__layout:has(.section-hero__tech:hover, .section-hero__frame:hover) {
+    .section-hero__photo::before {
+      background-color: var(--color-signal);
+      box-shadow: var(--line-glow);
+      transition-delay: calc((var(--tech-count) - var(--lit-from)) * 80ms);
+    }
+
+    .section-hero__frame {
+      box-shadow: 0 0 0 0.375rem color-mix(in srgb, var(--color-signal) 18%, transparent);
+      transition-delay: calc((var(--tech-count) - var(--lit-from) + 1) * 80ms);
     }
   }
 }

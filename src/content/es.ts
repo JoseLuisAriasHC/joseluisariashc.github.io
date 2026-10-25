@@ -1,3 +1,4 @@
+import { caseImages } from './images'
 import type { SiteContent } from './types'
 
 // Textos en revisión: se ajustarán antes de publicar
@@ -125,6 +126,10 @@ export const es: SiteContent = {
           'Catálogo y carrito adaptados y probados, con un proceso de migración al nuevo modelo. La plataforma sigue en desarrollo y la migración evoluciona con sus necesidades.',
       },
       stack: ['C#', '.NET', 'SQL Server'],
+      image: {
+        ...caseImages['b2b-platform'],
+        alt: 'Ilustración de la migración: tablas enredadas del sistema anterior, selección de algunos contratos y el nuevo modelo con un producto base, sus variantes y el catálogo con carrito.',
+      },
     },
     {
       key: 'automation',

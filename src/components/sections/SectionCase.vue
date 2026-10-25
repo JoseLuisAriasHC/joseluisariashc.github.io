@@ -11,6 +11,10 @@ const { study, ui } = defineProps<{
 
 const STEP_ORDER: CaseStepKey[] = ['context', 'contribution', 'solution', 'result']
 
+// Ancho con el que se muestra la imagen: la columna lateral en escritorio y, en una sola
+// columna, el ancho del contenido hasta 36rem (el límite de __aside)
+const IMAGE_SIZES = '(min-width: 62rem) 27rem, (min-width: 39rem) 36rem, calc(100vw - 3rem)'
+
 const headingId = useId()
 
 const steps = computed(() =>
@@ -69,6 +73,8 @@ const techGroups = computed(() =>
           v-if="study.image"
           class="section-case__media"
           :src="study.image.src"
+          :srcset="study.image.srcset"
+          :sizes="IMAGE_SIZES"
           :alt="study.image.alt"
           loading="lazy"
           decoding="async"
@@ -183,21 +189,26 @@ const techGroups = computed(() =>
     }
   }
 
+  // En una sola columna (móvil y tablet) la imagen no ocupa todo el ancho
   &__aside {
+    max-width: 36rem;
+
     @include mq(lg) {
       grid-area: aside;
       align-self: center;
     }
   }
 
+  // El borde separa la imagen del fondo aunque comparta sus colores
   &__media {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
+    border: var(--line-width) solid var(--color-line);
     border-radius: var(--space-3);
     object-fit: cover;
 
-    // Hueco hasta que llegue la foto representativa
+    // Hueco hasta que llegue la imagen
     &--pending {
       display: grid;
       place-items: center;

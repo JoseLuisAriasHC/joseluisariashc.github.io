@@ -74,6 +74,16 @@ export interface CaseArticle {
   lang: Locale
 }
 
+/** Imagen de un caso en sus distintos anchos, para que el navegador elija la adecuada */
+export interface CaseImageSource {
+  src: string
+  srcset: string
+}
+
+export interface CaseImage extends CaseImageSource {
+  alt: string
+}
+
 export interface CaseStudy extends SectionMeta {
   key: CaseKey
   title: string
@@ -85,8 +95,8 @@ export interface CaseStudy extends SectionMeta {
   integrations?: string[]
   /** Artículos publicados sobre el tema del caso; solo se muestran si hay alguno */
   articles?: CaseArticle[]
-  /** Foto representativa; mientras no llegue se muestra un hueco */
-  image?: { src: string; alt: string }
+  /** Imagen ilustrativa; mientras no llegue se muestra un hueco */
+  image?: CaseImage
 }
 
 export interface FaqItem {

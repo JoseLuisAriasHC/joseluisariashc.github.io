@@ -1,3 +1,4 @@
+import { caseImages } from './images'
 import type { SiteContent } from './types'
 
 // Traducción de es.ts: cualquier cambio en el español se repite aquí
@@ -125,6 +126,10 @@ export const en: SiteContent = {
           'A catalog and cart adapted and tested, with a migration process to the new model. The platform is still in development, and the migration keeps evolving with its needs.',
       },
       stack: ['C#', '.NET', 'SQL Server'],
+      image: {
+        ...caseImages['b2b-platform'],
+        alt: 'Illustration of the migration: tangled tables from the old system, a selection of some contracts, and the new model with a base product, its variants and the catalog with a cart.',
+      },
     },
     {
       key: 'automation',

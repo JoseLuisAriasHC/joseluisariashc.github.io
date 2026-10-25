@@ -38,5 +38,6 @@ __screenshots__/
 # Vite
 *.timestamp-*-*.mjs
 
-# Fotos originales: en el proyecto solo van las versiones optimizadas
+# Fotos e imágenes originales: en el proyecto solo van las versiones optimizadas de src/assets
 /JKZN1335*
+/*.png

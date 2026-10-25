@@ -1,6 +1,6 @@
 import type { SiteContent } from './types'
 
-// Borrador a partir del perfil de LinkedIn. Los textos marcados con [Pendiente: …] faltan por escribir.
+// Textos en revisión: se ajustarán antes de publicar
 export const es: SiteContent = {
   locale: 'es',
 
@@ -184,13 +184,13 @@ export const es: SiteContent = {
       company: 'Dreams',
       steps: {
         context:
-          'El panel de administración de una aplicación web tenía problemas de compatibilidad con algunos navegadores y una gestión de archivos complicada.',
+          'Un panel de administración antiguo necesitaba actualizarse para funcionar correctamente en navegadores actuales y facilitar la gestión de archivos, conservando las funcionalidades existentes.',
         contribution:
-          'Renové el panel y desarrollé funcionalidades con ASP.NET MVC y vistas Razor para gestionar usuarios, permisos, contenidos y procesos internos.',
+          'Me encargué de renovar el panel, adaptar sus funcionalidades y mejorar la gestión de archivos. Trabajé en la administración de usuarios y permisos con MVC y vistas Razor.',
         solution:
-          '[Pendiente: cómo lo abordaste; qué cambiaste en la interfaz y en la gestión de archivos, y cómo lo probaste en los distintos navegadores.]',
+          'Actualicé las vistas y los componentes que presentaban problemas de compatibilidad e integré la carga de archivos en el propio panel. Mantuve las funcionalidades necesarias para que los usuarios pudieran continuar con sus tareas habituales.',
         result:
-          'El panel funciona igual en los navegadores habituales y gestionar archivos es más sencillo. [Pendiente: un dato concreto si lo tienes.]',
+          'Un panel actualizado para navegadores actuales, con la carga de archivos integrada y una gestión más sencilla, conservando las funcionalidades del sistema anterior.',
       },
       stack: ['C#', 'ASP.NET MVC', 'Razor', 'SQL Server'],
     },

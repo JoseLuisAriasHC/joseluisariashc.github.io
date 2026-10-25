@@ -14,3 +14,9 @@ npm run build    # comprueba tipos y genera dist/
 npm run lint
 npm run format
 ```
+
+## Publicación
+
+Cada vez que se sube algo a `main`, el flujo [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) compila la web y la publica en GitHub Pages: https://joseluisariashc.github.io/ (y `/en/`). También se puede lanzar a mano desde la pestaña Actions.
+
+Requisito: en Settings → Pages, «Source» tiene que estar en «GitHub Actions».

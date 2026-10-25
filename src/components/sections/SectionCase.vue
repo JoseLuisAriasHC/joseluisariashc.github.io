@@ -3,6 +3,7 @@ import { computed, useId } from 'vue'
 import BaseFlow from '@/components/base/BaseFlow.vue'
 import BaseSection from '@/components/base/BaseSection.vue'
 import type { CaseStepKey, CaseStudy, UiLabels } from '@/content/types'
+import SectionCaseImage from './SectionCaseImage.vue'
 
 const { study, ui } = defineProps<{
   study: CaseStudy
@@ -69,19 +70,16 @@ const techGroups = computed(() =>
       </BaseFlow>
 
       <div class="section-case__aside">
-        <img
+        <SectionCaseImage
           v-if="study.image"
-          class="section-case__media"
-          :src="study.image.src"
-          :srcset="study.image.srcset"
+          :image="study.image"
           :sizes="IMAGE_SIZES"
-          :alt="study.image.alt"
-          loading="lazy"
-          decoding="async"
+          :enlarge-label="ui.enlargeImage"
+          :close-label="ui.closeImage"
         />
         <div
           v-else
-          class="section-case__media section-case__media--pending"
+          class="section-case__pending"
         >
           {{ ui.imagePending }}
         </div>
@@ -200,22 +198,15 @@ const techGroups = computed(() =>
   }
 
   // El borde separa la imagen del fondo aunque comparta sus colores
-  &__media {
-    display: block;
-    width: 100%;
+  // Hueco hasta que llegue la imagen
+  &__pending {
+    display: grid;
+    place-items: center;
     aspect-ratio: 4 / 3;
-    border: var(--line-width) solid var(--color-line);
+    border: var(--line-width) dashed var(--color-line);
     border-radius: var(--space-3);
-    object-fit: cover;
-
-    // Hueco hasta que llegue la imagen
-    &--pending {
-      display: grid;
-      place-items: center;
-      border: var(--line-width) dashed var(--color-line);
-      color: var(--color-text-soft);
-      font-size: var(--text-14);
-    }
+    color: var(--color-text-soft);
+    font-size: var(--text-14);
   }
 
   // Tabla de dos columnas: la etiqueta a la izquierda y sus elementos alineados a la derecha

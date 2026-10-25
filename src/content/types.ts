@@ -78,6 +78,8 @@ export interface CaseArticle {
 export interface CaseImageSource {
   src: string
   srcset: string
+  /** Versión para la vista ampliada cuando muestra más que la miniatura; si no, se amplía src */
+  zoom?: string
 }
 
 export interface CaseImage extends CaseImageSource {
@@ -142,6 +144,9 @@ export interface UiLabels {
   articles: string
   caseSteps: Record<CaseStepKey, string>
   imagePending: string
+  /** Texto para lectores de pantalla del botón que amplía la imagen de un caso */
+  enlargeImage: string
+  closeImage: string
   alternateLanguage: LanguageLink
 }
 

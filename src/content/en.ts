@@ -42,6 +42,8 @@ export const en: SiteContent = {
       result: 'Result',
     },
     imagePending: 'Image pending',
+    enlargeImage: 'Enlarge image',
+    closeImage: 'Close',
     alternateLanguage: { label: 'Español', href: '/', lang: 'es' },
   },
 

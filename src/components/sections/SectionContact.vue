@@ -3,6 +3,7 @@ import { useId } from 'vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseSection from '@/components/base/BaseSection.vue'
 import type { ContactContent, Person, UiLabels } from '@/content/types'
+import SectionContactEmail from './SectionContactEmail.vue'
 import SectionContactFaq from './SectionContactFaq.vue'
 
 defineProps<{
@@ -41,7 +42,12 @@ const headingId = useId()
             <span class="visually-hidden">({{ ui.opensInNewTab }})</span>
           </BaseButton>
         </div>
-        <p class="section-contact__email">{{ person.links.email }}</p>
+        <SectionContactEmail
+          class="section-contact__email"
+          :email="person.links.email"
+          :copy-label="ui.copyEmail"
+          :copied-label="ui.emailCopied"
+        />
       </div>
 
       <SectionContactFaq

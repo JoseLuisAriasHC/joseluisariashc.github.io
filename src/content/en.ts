@@ -29,6 +29,8 @@ export const en: SiteContent = {
     seeWork: 'See featured work',
     downloadCv: 'Download CV',
     writeEmail: 'Send an email',
+    copyEmail: 'Copy',
+    emailCopied: 'Copied',
     viewLinkedin: 'View LinkedIn profile',
     mainStack: 'Main technologies',
     present: 'present',

@@ -136,6 +136,9 @@ export interface UiLabels {
   seeWork: string
   downloadCv: string
   writeEmail: string
+  /** Botón junto a la dirección de correo y el aviso que muestra al copiarla */
+  copyEmail: string
+  emailCopied: string
   viewLinkedin: string
   mainStack: string
   present: string

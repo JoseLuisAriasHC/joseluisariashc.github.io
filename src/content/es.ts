@@ -29,6 +29,8 @@ export const es: SiteContent = {
     seeWork: 'Ver trabajos destacados',
     downloadCv: 'Descargar CV',
     writeEmail: 'Escribir un correo',
+    copyEmail: 'Copiar',
+    emailCopied: 'Copiado',
     viewLinkedin: 'Ver perfil de LinkedIn',
     mainStack: 'Tecnologías principales',
     present: 'actualidad',

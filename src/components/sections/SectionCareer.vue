@@ -24,9 +24,6 @@ const jobs = computed(() =>
   })),
 )
 
-// El puesto sin fecha de fin es el actual: su nodo va relleno, como la sección activa del menú
-const currentJobIndex = computed(() => career.jobs.findIndex((job) => !job.period.end))
-
 const education = computed(() =>
   career.education.map((item) => ({
     key: item.key,
@@ -58,7 +55,7 @@ const education = computed(() =>
           class="section-career__flow"
           :items="jobs"
           :item-key="(job) => job.key"
-          :active-index="currentJobIndex"
+          mark-hover
         >
           <template #default="{ item }">
             <SectionCareerItem
@@ -76,6 +73,7 @@ const education = computed(() =>
           class="section-career__flow"
           :items="education"
           :item-key="(item) => item.key"
+          mark-hover
         >
           <template #default="{ item }">
             <SectionCareerItem

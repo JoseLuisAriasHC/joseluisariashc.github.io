@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import { useId } from 'vue'
 import type { FaqItem } from '@/content/types'
 
 defineProps<{
   title: string
   items: FaqItem[]
 }>()
+
+// Los <details> con el mismo name forman un acordeón: abrir una respuesta cierra la anterior
+const group = useId()
 </script>
 
 <template>
@@ -14,6 +18,7 @@ defineProps<{
       v-for="item in items"
       :key="item.key"
       class="section-contact-faq__item"
+      :name="group"
     >
       <summary class="section-contact-faq__question">{{ item.question }}</summary>
       <p class="section-contact-faq__answer">{{ item.answer }}</p>

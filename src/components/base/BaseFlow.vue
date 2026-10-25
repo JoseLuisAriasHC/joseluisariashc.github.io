@@ -3,12 +3,18 @@
   --flow-gap separa los elementos y --node-offset alinea el nodo con la primera línea del contenido.
 -->
 <script setup lang="ts" generic="T">
-const { ordered = false, activeIndex = -1 } = defineProps<{
+const {
+  ordered = false,
+  activeIndex = -1,
+  markHover = false,
+} = defineProps<{
   items: T[]
   itemKey: (item: T) => string
   ordered?: boolean
   /** Rellena el nodo de este elemento (el menú móvil marca la sección actual) */
   activeIndex?: number
+  /** Con ratón, rellena el nodo del elemento señalado para marcar dónde se está leyendo */
+  markHover?: boolean
 }>()
 
 defineSlots<{
@@ -19,7 +25,7 @@ defineSlots<{
 <template>
   <component
     :is="ordered ? 'ol' : 'ul'"
-    class="base-flow"
+    :class="['base-flow', { 'base-flow--mark-hover': markHover }]"
     role="list"
   >
     <li
@@ -79,6 +85,17 @@ defineSlots<{
     border-radius: 50%;
 
     &--active {
+      background-color: var(--color-signal);
+    }
+  }
+
+  // Solo el nodo cambia, no el texto: marca la lectura sin parecer un enlace
+  @media (hover: hover) {
+    &--mark-hover &__node {
+      transition: background-color var(--duration-quick) var(--ease-out);
+    }
+
+    &--mark-hover &__item:hover &__node {
       background-color: var(--color-signal);
     }
   }

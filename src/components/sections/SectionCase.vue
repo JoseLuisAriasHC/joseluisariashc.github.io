@@ -56,6 +56,7 @@ const techGroups = computed(() =>
         :items="steps"
         :item-key="(step) => step.key"
         ordered
+        mark-hover
       >
         <template #default="{ item }">
           <h3 class="section-case__step-label">{{ item.label }}</h3>
